@@ -43,7 +43,7 @@ app.use((ctx, next) => {
 })
 
 const port = process.env.PORT || 8080
-app.listen(port, '127.0.0.1', () => {
+app.listen(port, () => {
   console.log('\n--------- Started ---------')
   console.log(chalk.bold('NODE_ENV:'), chalk.keyword('orange').bold(process.env.NODE_ENV || 'development'))
   const url = `http://127.0.0.1:${port}`
