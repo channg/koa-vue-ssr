@@ -1,4 +1,4 @@
-/* eslint-disable consistent-return */
+
 const router = require('koa-router')()
 const LRU = require('lru-cache')
 const View = require('./View')
