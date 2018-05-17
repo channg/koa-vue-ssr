@@ -1,7 +1,7 @@
 
 const router = require('koa-router')()
 const LRU = require('lru-cache')
-const View = require('./View')
+const View = require('../view/View')
 
 const isProd = process.env.NODE_ENV === 'production'
 

@@ -4,7 +4,7 @@ const LRU = require('lru-cache')
 
 const isProd = process.env.NODE_ENV === 'production'
 
-const rootPath = path.resolve(__dirname, '../')
+const rootPath = path.resolve(__dirname, '../../')
 
 /* eslint-disable import/no-dynamic-require */
 const defaults = {
@@ -17,7 +17,6 @@ class View {
   constructor(app, options = {}) {
     this.template = options.template ||
       fs.readFileSync(defaults.template, 'utf-8')
-
     if (isProd) {
       const bundle = options.bundle || require(defaults.bundle)
       const clientManifest = options.clientManifest || require(defaults.clientManifest)
