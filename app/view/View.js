@@ -17,6 +17,7 @@ class View {
   constructor(app, options = {}) {
     this.template = options.template ||
       fs.readFileSync(defaults.template, 'utf-8')
+    
     if (isProd) {
       const bundle = options.bundle || require(defaults.bundle)
       const clientManifest = options.clientManifest || require(defaults.clientManifest)
@@ -30,7 +31,7 @@ class View {
       })
     }
   }
-
+  
   /**
    * create bundle renderer
    * @param {file} bundle
@@ -47,7 +48,7 @@ class View {
       runInNewContext: false
     }, options))
   }
-
+  
   /**
    * render html
    * @param {object} context

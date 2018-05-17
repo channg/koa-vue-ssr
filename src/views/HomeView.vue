@@ -1,8 +1,6 @@
 <template>
   <div class="home-view">
-    <img src="../assets/img/logo.png">
-    <h1>Koa Vue SSR Template</h1>
-    <p>This template built with <a href="https://github.com/vuejs/vue">vue 2.x</a>, <a href="https://github.com/vuejs/vue-router">vue-router</a> & <a href="https://github.com/vuejs/vuex">vuex</a> with server-side rendering by <a href="https://github.com/koajs/koa">koa</a>.</p>
+
   </div>
 </template>
 
