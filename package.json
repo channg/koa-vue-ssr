@@ -27,6 +27,7 @@
     "koa-router": "^7.2.1",
     "koa-static": "^4.0.1",
     "lru-cache": "^4.1.1",
+    "mysql": "^2.15.0",
     "vue": "^2.5.13",
     "vue-router": "^3.0.1",
     "vue-server-renderer": "^2.5.13",

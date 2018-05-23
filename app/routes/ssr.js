@@ -18,19 +18,19 @@ const microCache = LRU({
 module.exports = function (app) {
   // create vue renderer instance
   const view = new View(app)
-  
+
   async function render(ctx, next) {
     // render middleware
     ctx.type = 'html'
-    
+
     const { PassThrough } = require('stream')
     ctx.body = new PassThrough()
-    
+
     if (!view.renderer) {
       ctx.body.end('waiting for compilation... refresh in a moment.')
       return
     }
-    
+
     // hit micro cache
     const cacheable = isCacheable(ctx)
     if (cacheable) {
@@ -41,7 +41,7 @@ module.exports = function (app) {
         return
       }
     }
-    
+
     function handleError(error) {
       // console.error('RENDER ERROR', error)
       if (error.url) {
@@ -58,7 +58,7 @@ module.exports = function (app) {
         // console.error(error.stack)
       }
     }
-    
+
     function handleEnd(content) {
       if (cacheable) {
         // set micro cache
@@ -66,7 +66,7 @@ module.exports = function (app) {
       }
       ctx.body.end(content)
     }
-    
+
     try {
       const context = {
         title: 'blog',
@@ -78,12 +78,11 @@ module.exports = function (app) {
       handleError(error)
     }
   }
-  
+
   // Not matched /api uri
   router.get(/^(?!\/api)(?:\/|$)/, isProd ? render : (ctx, next) => {
-    console.log('some')
     view.ready.then(() => render(ctx, next))
   })
-  
+
   return router
 }

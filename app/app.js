@@ -1,12 +1,14 @@
 const Koa = require('koa')
+
 const app = new Koa()
+
 const logger = require('koa-logger')
-const router = require('./routes/router')(app)
+const ssr = require('./routes/ssr')(app)
+const { api } = require('./routes/api')
 const path = require('path')
+
 const isProd = process.env.NODE_ENV === 'production'
-
 const rootPath = path.resolve(__dirname, '../')
-
 const resolve = file => path.resolve(rootPath, file)
 app.use(logger())
 app.use(require('koa-static')(`${__dirname}/public`))
@@ -25,7 +27,8 @@ app.use(async (ctx, next) => {
 app.use(serve('public', true))
 app.use(serve('dist', true))
 // routes
-app.use(router.routes()).use(router.allowedMethods())
+app.use(ssr.routes()).use(ssr.allowedMethods())
+app.use(api.routes()).use(api.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
