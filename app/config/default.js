@@ -3,11 +3,11 @@ module.exports.config = {
   port: 3000,
   // 数据库配置
   database: {
-    DATABASE: 'xxx',
-    USERNAME: 'xxx',
-    PASSWORD: 'xxx',
+    DATABASE: 'ssr',
+    USERNAME: 'ssr',
+    PASSWORD: 'L1@aa21123a',
     PORT: '3306',
-    HOST: 'xxx'
+    HOST: '118.24.54.66'
   }
 }
 
